@@ -1,0 +1,38 @@
+* {
+ box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+.App-outer {
+  text-align: center;
+  min-height: 100vh;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.header {
+  height: 100px;
+}
+
+.head-icon {
+  color: gold;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.title {
+  color: white;
+  margin-left: 10px;
+
+}
+
+.title span {
+  color: gold;
+}
+
