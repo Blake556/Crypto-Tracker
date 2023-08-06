@@ -22,24 +22,24 @@ function App() {
 
   console.log(searchData);
 
-  // function handleSearch(event) {
-  //   event.preventDefault();
+  function handleSearch(event) {
+    event.preventDefault();
 
-  //   fetch("/api/search", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ searchData }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
+    fetch("/api/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ searchData }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   return (
     <div className="App-outer">
@@ -50,8 +50,9 @@ function App() {
         </h1>
       </div>
       <Search
-        // searchData={searchData}
-        // handleSearch={handleSearch}
+        searchData={searchData}
+        setSearchData={setSearchData}
+        handleSearch={handleSearch}
       />
       <ListCoins />
 
