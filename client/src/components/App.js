@@ -6,23 +6,11 @@ import Search from "./Search";
 import ListCoins from "./ListCoins";
 
 function App() {
-  //const [backendData, setBackendData] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("/api").then(
-  //     response => response.json()
-  //   ).then(
-  //     data => {
-  //       setBackendData(data.users);
-  //     }
-  //   )
-  // }, []);
-
+ 
   const [searchData, setSearchData] = useState("");
 
-  console.log(searchData);
-
   function handleSearch(event) {
+    
     event.preventDefault();
 
     fetch("/api/search", {
@@ -56,15 +44,6 @@ function App() {
       />
       <ListCoins />
 
-      {/*  
-      {(backendData.length === 0) ? (
-        <p>Loading...</p>
-      ) : (
-        backendData.map((user, i) => (
-          <p key={i}>{user}</p>
-        ))
-      )}
-    */}
     </div>
   );
 }

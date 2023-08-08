@@ -3,37 +3,6 @@ import React, {useState} from 'react';
 
 function Search(props) {
 
-
-//   const [searchData, setSearchData] = useState('');
-
-//   console.log(searchData)
-
-// function handleSearch(event) {
-
-//   event.preventDefault();
-
-//     fetch("/api/search", {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       }, 
-//       body: JSON.stringify({searchData}), 
-//     })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log(data)
-//     })
-//     .catch((error) => {
-//       console.error(error)
-//     });
-//   }
-
-    // function passHandleSearch(inputValue) {
-    //   props.handleSearch(inputValue)
-     
-    // }
-
-   
     function handleInputChange(event) {
       const inputValue = event.target.value;
       props.setSearchData(inputValue);

@@ -1,56 +1,42 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const PORT = 4000;
-// const axios = require('axios');  
-const request = require('request');
-const bodyParser = require('body-parser')
+const axios = require('axios');
+const bodyParser = require('body-parser');
 
-app.use(express.urlencoded({extended: true }))
-app.use(express.json())
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(bodyParser.json());
 
-const clientId ='9bdfdf610ba42efe755e151eaaca157e1772fc94ab72748f8e57356b59247ecf'
-const clientSecret ='9739104ca1d2b3f9145af2b6ed2404b377409a39cfb65d56f985dac765d780c9'
+// const clientId = 'YOUR_COINBASE_CLIENT_ID';
+// const clientSecret = 'YOUR_COINBASE_CLIENT_SECRET';
 
-app.get("/", function(req, res) {
-    req.send("/")
-})
+app.post("/api/search", async function (req, res) {
+  const searchData = req.body.searchData;
+  console.log("Received search data:", typeof searchData);
 
-app.post("/api/search", function (req, res) {
-    const searchData = req.body.searchData;
-  
-    // Log the received data on the server
-    console.log("Received search data:", searchData);
+  try {
+    const url = `https://api.exchange.coinbase.com/currencies/${searchData}`;
+    const headers = {
+      'Content-Type': 'application/json',
+    };
 
-    // Send the search data back to the client
-    res.json({ message: 'Data received', data: searchData });
-  });
-  
+    const response = await axios.get(url, { headers });
+    const data = response.data;
 
+    console.log('Coinbase API Response:', data);
 
-
-
-
-
-
-
-
-
-
-// app.post("/api/search", function (req, res) {
-//    const searchData = req.body.searchData
-//     console.log(searchData)
-//    res.json({ message: 'Data recieved ok', data: searchData})
-//    //console.log(searchData)
-// })
-
-// app.get("/api", (req, res) => {
-//     res.json({ "users": ['MrProducer', 'Blake', "TopB"] })
-// })
-
-
+    res.json({ message: 'Data received', data });
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+    if (error.response) {
+      console.error('Coinbase API Error Response:', error.response.data);
+      console.error('Coinbase API Error Status:', error.response.status);
+    }
+    res.status(500).json({ error: 'Failed to fetch data from Coinbase API' });
+  }
+});
 
 app.listen(PORT, () => {
-    console.log(`Server live at ${PORT} `)
-})
-
+  console.log(`Server live at ${PORT} `);
+});
