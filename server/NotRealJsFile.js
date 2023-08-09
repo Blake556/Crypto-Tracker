@@ -75,3 +75,85 @@ app.post("/api/search", function (req, res) {
 app.listen(PORT, () => {
   console.log(`Server live at ${PORT} `);
 });
+
+
+
+
+
+
+
+
+
+
+app.post("/api/search", async function (req, res) {
+  const searchData = req.body.searchData;
+  console.log("Received search data:", typeof searchData);
+
+  try {
+    const url = `https://api.exchange.coinbase.com/currencies/${searchData}`;
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+
+    const response = await axios.get(url, { headers });
+    const data = response.data;
+
+    console.log('Coinbase API Response:', data);
+
+    res.json({ message: 'Data received', data });
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+    if (error.response) {
+      console.error('Coinbase API Error Response:', error.response.data);
+      console.error('Coinbase API Error Status:', error.response.status);
+    }
+    res.status(500).json({ error: 'Failed to fetch data from Coinbase API' });
+  }
+});
+
+
+
+
+
+
+
+
+request.post(
+  { url: authUrl, form: authParams },
+  (authError, authResponse, authBody) => {
+    if (authError) {
+      console.error("Error getting access token:", authError.message);
+      return res.status(500).json({ error: "Failed to authenticate" });
+    }
+
+    const authData = JSON.parse(authBody);
+    if (authResponse.statusCode !== 200 || authData.error) {
+      console.error(
+        "Error getting access token:",
+        authData.error_description
+      );
+      return res.status(500).json({ error: "Failed to authenticate" });
+    }
+
+    const accessToken = authData.access_token;
+
+    // Make a request to search for the coin using the access token
+    const apiUrl = `https://api.coinbase.com/v2/assets/search?query=${searchData}`;
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+
+    request.get(
+      { url: apiUrl, headers },
+      (searchError, searchResponse, searchBody) => {
+        if (searchError) {
+          console.error("Error searching for coin:", searchError.message);
+          return res.status(500).json({ error: "Failed to fetch coin data" });
+        }
+
+        const searchResult = JSON.parse(searchBody);
+        res.json({ message: "Data received", data: searchResult });
+      }
+    );
+  }
+);
