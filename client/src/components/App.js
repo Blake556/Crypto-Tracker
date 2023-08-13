@@ -4,30 +4,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import Search from "./Search";
 import ListCoins from "./ListCoins";
+// import axios from "axios";
 
 function App() {
  
-  const [searchData, setSearchData] = useState("");
+  // GET API call
 
-  function handleSearch(event) {
-    
-    event.preventDefault();
+  //const [searchData, setSearchData] = useState("");
+  const [data, setData] = useState([]);
 
-    fetch("/api/search", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ searchData }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  useEffect(() => {
+    fetchData(); // Call the function to make the GET API call
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/api/search");
+      const jsonData = await response.json();
+      setData(jsonData);
+      //console.log(jsonData)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+
+  console.log(data)
+
+
 
   return (
     <div className="App-outer">
@@ -38,11 +42,13 @@ function App() {
         </h1>
       </div>
       <Search
-        searchData={searchData}
-        setSearchData={setSearchData}
-        handleSearch={handleSearch}
+        //searchData={searchData}
+        //setSearchData={setSearchData}
+        // handleSearch={handleSearch}
       />
       <ListCoins />
+
+
 
     </div>
   );
