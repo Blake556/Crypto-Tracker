@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import Search from "./Search";
-import ListCoins from "./ListCoins";
+import Coin from "./Coin";
 // import axios from "axios";
 
 function App() {
@@ -14,30 +14,14 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const hasFetchedData = localStorage.getItem("hasFetchedData");
-
-    if (!hasFetchedData) {
-      fetchData();
-    } else {
-      // If data is already fetched, get it from localStorage
-      const cachedData = JSON.parse(localStorage.getItem("cryptoData"));
-      setData(cachedData);
-    }
+    fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/search");
-      if (!response.ok) {
-        throw new Error("API request failed");
-      }
+      const response = await fetch('/api/getData');
       const jsonData = await response.json();
-      console.log("API Response:", jsonData);
       setData(jsonData);
-      // Store data in localStorage
-      localStorage.setItem("cryptoData", JSON.stringify(jsonData));
-      // Mark that data has been fetched
-      localStorage.setItem("hasFetchedData", "true");
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -46,9 +30,10 @@ function App() {
   console.log(data);
 
 
-  let btc = data[4].current_price
-  console.log(btc)
-  console.log(data[4].current_price)
+  // let btc = data[4].current_price
+  // console.log(btc)
+  // console.log(data[4].current_price)
+  // console.log(data[3].current_price)
 
 
 
@@ -65,8 +50,8 @@ function App() {
         //setSearchData={setSearchData}
         // handleSearch={handleSearch}
       />
-      <ListCoins />
-      <p>{btc}</p>
+      <Coin data={data}/>
+      {/* <p>{btc}</p> */}
 
 
     </div>

@@ -3,7 +3,18 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBitcoin, faEthereum } from "@fortawesome/free-brands-svg-icons";
 
-function Coin() {
+function Coin(props) {
+
+  let coinData = props.data
+  let btc = coinData[0].id
+  let price = coinData[0].current_price
+  let hours = coinData[0].market_cap_change_percentage_24h
+  console.log(coinData)
+  // console.log(coinData[0].id)
+  // console.log(coinData[0].current_price)
+  // console.log(coinData[0].market_cap_change_percentage_24h)
+  
+
   return (
     <div className="Coin-body">
       <div className="coin-header d-flex justify-content-between">
@@ -13,16 +24,20 @@ function Coin() {
         <span>24h</span>
       </div>
 
+      {/* {coinData.map(d => { */}
+
       
       <div className="coin-data-container d-flex justify-content-between align-items-center">
         <span>1</span>
         <div className="d-flex align-items-center">
           <FontAwesomeIcon icon={faBitcoin} className="coin-icon" />
-          <span>BTC</span>
+          <span>{btc}</span>
         </div>
-        <span>$29,207</span>
-        <span>1.97%</span>
+        <span>{price}</span>
+        <span>{hours}</span>
       </div>
+        {/* }) */}
+      {/* } */}
       
       {/* <div className="coin-data-container d-flex justify-content-between align-items-center">
         <span>2</span>
