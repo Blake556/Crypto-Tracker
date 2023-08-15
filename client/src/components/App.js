@@ -14,20 +14,36 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    const hasFetchedData = localStorage.getItem("hasFetchedData");
+
+    if (!hasFetchedData) {
+      fetchData();
+    } else {
+      // If data is already fetched, get it from localStorage
+      const cachedData = JSON.parse(localStorage.getItem("cryptoData"));
+      setData(cachedData);
+    }
   }, []);
 
   const fetchData = async () => {
     try {
-      const response = await fetch('/api/getData');
+      const response = await fetch("/api/getData");
+      if (!response.ok) {
+        throw new Error("API request failed");
+      }
       const jsonData = await response.json();
+      console.log("API Response:", jsonData);
       setData(jsonData);
+      // Store data in localStorage
+      localStorage.setItem("cryptoData", JSON.stringify(jsonData));
+      // Mark that data has been fetched
+      localStorage.setItem("hasFetchedData", "true");
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
 
-  console.log(data);
+  //console.log(data);
 
 
   // let btc = data[4].current_price

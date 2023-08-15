@@ -5,14 +5,16 @@ import { faBitcoin, faEthereum } from "@fortawesome/free-brands-svg-icons";
 
 function Coin(props) {
 
+
   let coinData = props.data
-  let btc = coinData[0].id
-  let price = coinData[0].current_price
-  let hours = coinData[0].market_cap_change_percentage_24h
-  console.log(coinData)
-  // console.log(coinData[0].id)
-  // console.log(coinData[0].current_price)
-  // console.log(coinData[0].market_cap_change_percentage_24h)
+  // let btc
+  // setTimeout(() => {
+  //   btc = coinData[0].id
+  //   console.log(btc)
+  //   console.log(coinData[0].current_price)
+  //   console.log(coinData[0].market_cap_change_percentage_24h)
+  // }, "1000");
+
   
 
   return (
@@ -24,20 +26,21 @@ function Coin(props) {
         <span>24h</span>
       </div>
 
-      {/* {coinData.map(d => { */}
+      {coinData.map((coin, index) => (
 
       
       <div className="coin-data-container d-flex justify-content-between align-items-center">
-        <span>1</span>
+        <span>{index + 1}</span>
         <div className="d-flex align-items-center">
           <FontAwesomeIcon icon={faBitcoin} className="coin-icon" />
-          <span>{btc}</span>
+          <span>{coin.id}</span>
         </div>
-        <span>{price}</span>
-        <span>{hours}</span>
+        <span>{coin.current_price}</span>
+        <span>{coin.market_cap_change_percentage_24h}</span>
       </div>
-        {/* }) */}
-      {/* } */}
+      )) 
+        }
+      
       
       {/* <div className="coin-data-container d-flex justify-content-between align-items-center">
         <span>2</span>
