@@ -27,6 +27,27 @@ app.get("/api/getData", async function (req, res) {
     
 });
 
+app.post("/api/search", async function (req, res) {
+
+  const searchData = req.body.searchData;
+  const vsCurrency = 'usd'; 
+
+  const url = `https://api.coingecko.com/api/v3/coins/${searchData}?vs_currency=${vsCurrency}`
+
+  try {
+      // Make the GET request using axios
+      const response = await axios.get(url);
+
+      // The data response is available in response.data
+      const data = response.data;
+      res.json(data);
+  } catch (error) {
+      console.error('Error fetching data:', error);
+      res.status(500).json({ error: 'Failed to fetch data' });
+  }
+
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server live at ${PORT} `);

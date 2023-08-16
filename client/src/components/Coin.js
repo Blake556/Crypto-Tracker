@@ -29,10 +29,10 @@ function Coin(props) {
       {coinData.map((coin, index) => (
 
       
-      <div className="coin-data-container d-flex justify-content-between align-items-center">
+      <div  key={index} className="coin-data-container d-flex justify-content-between align-items-center">
         <span>{index + 1}</span>
         <div className="d-flex align-items-center">
-          <FontAwesomeIcon icon={faBitcoin} className="coin-icon" />
+      <img src={coin.image} className="coin-icon" />
           <span>{coin.id}</span>
         </div>
         <span>{coin.current_price}</span>

@@ -10,7 +10,7 @@ function App() {
  
   // GET API call
 
-  //const [searchData, setSearchData] = useState("");
+  const [searchData, setSearchData] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -51,6 +51,28 @@ function App() {
   // console.log(data[4].current_price)
   // console.log(data[3].current_price)
 
+  // POST API Call to make a search
+
+  function handleSearch(event) {
+    
+    event.preventDefault();
+
+    fetch("/api/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ searchData }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
 
 
   return (
@@ -62,9 +84,9 @@ function App() {
         </h1>
       </div>
       <Search
-        //searchData={searchData}
-        //setSearchData={setSearchData}
-        // handleSearch={handleSearch}
+        searchData={searchData}
+        setSearchData={setSearchData}
+        handleSearch={handleSearch}
       />
       <Coin data={data}/>
       {/* <p>{btc}</p> */}
