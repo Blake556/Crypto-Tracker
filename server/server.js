@@ -29,10 +29,10 @@ app.get("/api/getData", async function (req, res) {
 
 app.post("/api/search", async function (req, res) {
 
-  const searchData = req.body.searchData;
-  const vsCurrency = 'usd'; 
+  const searchData = req.body.search;
+  //const vsCurrency = 'usd'; 
 
-  const url = `https://api.coingecko.com/api/v3/coins/${searchData}?vs_currency=${vsCurrency}`
+  const url = `https://api.coingecko.com/api/v3/coins/${searchData}`;
 
   try {
       // Make the GET request using axios

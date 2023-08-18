@@ -14,7 +14,20 @@ function Coin(props) {
   //   console.log(coinData[0].current_price)
   //   console.log(coinData[0].market_cap_change_percentage_24h)
   // }, "1000");
-
+  const searchData = props.searchData 
+  
+  // Checks if a seach as been made by seeing if the search object is empty or not
+  function isObjectEmpty(obj) {
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key) && obj[key]) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  // console.log(isObjectEmpty(searchData))
+  console.log( searchData)
   
 
   return (
@@ -26,10 +39,8 @@ function Coin(props) {
         <span>24h</span>
       </div>
 
-      {coinData.map((coin, index) => (
-
       
-      <div  key={index} className="coin-data-container d-flex justify-content-between align-items-center">
+      {/* <div  key={index} className="coin-data-container d-flex justify-content-between align-items-center">
         <span>{index + 1}</span>
         <div className="d-flex align-items-center">
       <img src={coin.image} className="coin-icon" />
@@ -37,10 +48,45 @@ function Coin(props) {
         </div>
         <span>{coin.current_price}</span>
         <span>{coin.market_cap_change_percentage_24h}</span>
-      </div>
-      )) 
-        }
-      
+      </div> */}
+
+      { isObjectEmpty(searchData) ? (
+
+        coinData.map((coin, index) => (
+
+        
+          <div  key={index} className="coin-data-container d-flex justify-content-between align-items-center">
+            <span>{index + 1}</span>
+            <div className="d-flex align-items-center">
+          <img src={coin.image} className="coin-icon" />
+              <span>{coin.id}</span>
+            </div>
+            <span>{coin.current_price}</span>
+            <span>{coin.market_cap_change_percentage_24h}</span>
+          </div>
+        ))
+        
+      ) : (
+
+      <div className="coin-data-container d-flex justify-content-between align-items-center">
+            <span></span>
+            <div className="d-flex align-items-center">
+          <img src={searchData.image} className="coin-icon" />
+              <span>{searchData.id}</span>
+            </div>
+            <span>{searchData.price}</span>
+            <span>{searchData.priceChange24}</span>
+          </div>
+
+        )}
+
+
+
+
+
+
+
+
       
       {/* <div className="coin-data-container d-flex justify-content-between align-items-center">
         <span>2</span>

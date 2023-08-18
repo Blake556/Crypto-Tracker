@@ -33,3 +33,15 @@ input:focus {
     border: none; /* Remove the border */
     /* Add any other styling you want for the focused state */
   }
+
+  .refresh {
+   position: relative;
+   left: 10%;
+  
+  }
+
+  .refresh-icon {
+    color: gold;
+    font-size: 1.5rem;
+   
+  }
