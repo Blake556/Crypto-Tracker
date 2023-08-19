@@ -1,7 +1,5 @@
-
 .Search-body {
-    height: 150px;
-   
+  height: 150px;
 }
 
 .search-container {
@@ -9,39 +7,50 @@
 }
 
 button {
-    background-color: gold;
-    color: black;
-    font-size: 1.6rem;
-    padding: 3px 10px 3px 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: none;
-    /* padding-bottom: .5px; */
+  background-color: rgb(29, 29, 29);
+  color: white;
+  font-size: 1.6rem;
+  padding: 7px 10px 7px 20px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border: 1px solid grey;
+  border-right: none;
+  /* padding-bottom: .5px; */
 }
 
 input {
-    font-size: 1.6rem;
-    border: none;
-    padding: 3px;
-    width: 300px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+  background-color: rgb(29, 29, 29);
+  color: white;
+  font-size: 1.6rem;
+  padding: 7px;
+  width: 300px;
+  border: 1px solid grey;
+  border-left: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 input:focus {
-    outline: none; /* Remove the default outline */
-    border: none; /* Remove the border */
-    /* Add any other styling you want for the focused state */
-  }
+  outline: none;
+}
 
-  .refresh {
-   position: relative;
-   left: 10%;
-  
-  }
+/* REFRESH BUTTON */
 
-  .refresh-icon {
-    color: gold;
-    font-size: 1.5rem;
-   
-  }
+.refresh {
+  position: relative;
+  left: 10%;
+}
+
+.refresh-icon {
+  color: grey;
+  font-size: 1.5rem;
+}
+
+.refresh-icon:hover {
+  color: rgb(208, 208, 208);
+}
+
+.refresh-icon:active {
+  color: grey;
+}
+

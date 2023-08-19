@@ -2,25 +2,69 @@ P {
     color: white;
 }
 
+.coin-body  {
+  
+    
+}
+
+.number {
+    width: auto;
+}
+
+
 .coin-header {
-    background-color: grey;
+    background-color: rgb(29, 29, 29);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     color: white;
-    padding: 2px 8px;
+    height: 50px;
+    padding: 2px 12px;
     border-radius: 5px;
+    text-align: start;
+
+  
    
 }
 
-.coin-header span {
+.header-box {
+    width: 100px;
 
 }
 
+.hb-coin {
+    margin-right: 60px;
+}
+
+.header-coin{
+    margin-right: 40px;
+    width: 130px;
+}
+
+.header-price {
+    padding-left: 14px;
+}
+
+.header-change {
+    text-align: end;
+}
+
 .coin-data-container {
-    background-color: grey;
+    background-color: rgb(29, 29, 29);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     color: white;
-    height: 50px;
+    height: 70px;
     margin: 20px 0;
-    padding: 8px;
+    padding: 12px;
     border-radius: 5px;
+}
+
+.coin-data-container span {
+    font-size: 1.1rem;
+}
+
+.coin-name {
+    width: 115px;
+    text-align: start;
+    padding-left: 10px;
 }
 
 .coin-icon {
@@ -30,7 +74,20 @@ P {
     width: 40px;
 }
 
-.eth {
-    color: darkblue;
+.coin-change {
+    text-align: start;
 }
+
+
+.coin-name,
+.coin-price,
+.coin-change {
+  width: 100px;
+}
+
+.coin-price {
+  padding-left: 15px;
+  text-align: start;
+}
+
 

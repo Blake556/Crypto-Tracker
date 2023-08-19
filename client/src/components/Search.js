@@ -1,7 +1,7 @@
 import "../styles/Search.css";
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
+import { faArrowsRotate, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 function Search(props) {
 
@@ -28,11 +28,13 @@ function Search(props) {
     <div className="className">
         <form onSubmit={handleFormSubmit}>
           <div className="search-container">
-            <button className="" type="submit" id="search">GO</button>
+            <button className="" type="submit" id="search">
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
             <input 
               className="" 
               type="text" 
-              placeholder="Search crypto" 
+              placeholder="Search coin" 
               value={props.search} 
               onChange={handleInputChange} 
             />

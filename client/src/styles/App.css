@@ -3,13 +3,13 @@
 }
 
 body {
-  background-color: black;
+  background-color: rgb(29, 29, 29);
 }
 
 .App-outer {
   text-align: center;
   min-height: 100vh;
-  width: 40%;
+  width: 42%;
   margin: 0 auto;
 }
 
@@ -18,7 +18,7 @@ body {
 }
 
 .head-icon {
-  color: gold;
+  color: rgb(62, 62, 255);
   margin-right: 10px;
 }
 
@@ -33,6 +33,6 @@ h1 {
 }
 
 .title span {
-  color: gold;
+  color: rgb(62, 62, 255);
 }
 

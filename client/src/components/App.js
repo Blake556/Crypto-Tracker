@@ -108,7 +108,7 @@ function App() {
       <div className="header d-flex justify-content-center align-items-center">
         <FontAwesomeIcon icon={faCoins} className="head-icon" size="3x" />
         <h1 className="title">
-          Crypto <span>tracker</span>
+          Crypto <span>Tracker</span>
         </h1>
       </div>
       <Search
