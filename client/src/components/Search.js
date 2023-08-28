@@ -25,7 +25,7 @@ function Search(props) {
 
   return (
     <div className="Search-body d-flex justify-content-center align-items-center">
-    <div className="className">
+    <div className="search-con">
         <form onSubmit={handleFormSubmit}>
           <div className="search-container">
             <button className="" type="submit" id="search">
@@ -40,7 +40,7 @@ function Search(props) {
             />
           </div>
         </form>
-      </div>
+  </div>
 
       <div className="refresh">
         <FontAwesomeIcon icon={faArrowsRotate} onClick={handleClick} className="refresh-icon" />
