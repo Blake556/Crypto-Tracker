@@ -1,0 +1,16 @@
+{
+    "hosting": {
+      "public": "path/to/your/react/build/directory",
+      "rewrites": [
+        {
+          "source": "/api/**",
+          "function": "yourExpressFunction"
+        }
+      ]
+    },
+    "functions": {
+      "source": "server", 
+      "runtime": "nodejs14"
+    }
+  }
+  

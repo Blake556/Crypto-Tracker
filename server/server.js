@@ -4,6 +4,7 @@ const PORT = 4000;
 const axios = require('axios');
 const request = require("request");
 const bodyParser = require('body-parser');
+const functions = require('firebase-functions');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -48,6 +49,7 @@ app.post("/api/search", async function (req, res) {
 
 });
 
+exports.yourExpressFunction = functions.https.onRequest(app);
 
 app.listen(PORT, () => {
   console.log(`Server live at ${PORT} `);
